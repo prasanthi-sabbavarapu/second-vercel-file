@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DevOps Lifecycle Diagram</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #00796b;
+      margin-top: 40px;
+    }
+
+    .circle-container {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      margin: 50px auto;
+      border-radius: 50%;
+    }
+
+    .phase {
+      position: absolute;
+      width: 120px;
+      height: 60px;
+      background-color: #00796b;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-weight: bold;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .phase:hover {
+      transform: scale(1.1);
+      background-color: #004d40;
+    }
+
+    /* Positioning phases in a circular layout */
+    .p1 { top: 0%; left: 38%; }
+    .p2 { top: 15%; right: 0%; }
+    .p3 { top: 38%; right: -10%; }
+    .p4 { bottom: 15%; right: 0%; }
+    .p5 { bottom: 0%; left: 38%; }
+    .p6 { bottom: 15%; left: 0%; }
+    .p7 { top: 38%; left: -10%; }
+    .p8 { top: 15%; left: 0%; }
+
+    .center {
+      position: absolute;
+      top: 40%;
+      left: 35%;
+      width: 30%;
+      background-color: #ffffff;
+      border: 3px dashed #00796b;
+      padding: 15px;
+      border-radius: 20px;
+      font-size: 18px;
+      color: #00796b;
+      font-weight: bold;
+    }
+
+    #description {
+      margin: 30px auto;
+      width: 60%;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+      font-size: 16px;
+      color: #333;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔄 DevOps Lifecycle</h1>
+  <div class="circle-container">
+    <div class="phase p1" onclick="showDescription('Plan')">Plan</div>
+    <div class="phase p2" onclick="showDescription('Develop')">Develop</div>
+    <div class="phase p3" onclick="showDescription('Build')">Build</div>
+    <div class="phase p4" onclick="showDescription('Test')">Test</div>
+    <div class="phase p5" onclick="showDescription('Release')">Release</div>
+    <div class="phase p6" onclick="showDescription('Deploy')">Deploy</div>
+    <div class="phase p7" onclick="showDescription('Operate')">Operate</div>
+    <div class="phase p8" onclick="showDescription('Monitor')">Monitor</div>
+    <div class="center">Continuous Integration & Deployment</div>
+  </div>
+
+  <div id="description">
+    Click on any stage to see its explanation here.
+  </div>
+
+  <script>
+    function showDescription(stage) {
+      const descriptions = {
+        "Plan": "In the planning stage, teams define project requirements, goals, and create a roadmap for development. Collaboration tools are used to track progress.",
+        "Develop": "The development phase involves writing and reviewing code, implementing features, and ensuring coding standards are followed.",
+        "Build": "In the build stage, source code is compiled, packaged, and prepared for deployment using automation tools.",
+        "Test": "Testing ensures the product works as intended. Automated and manual tests are performed to detect and fix bugs.",
+        "Release": "In the release stage, the tested build is made available for deployment. This ensures it’s ready for production.",
+        "Deploy": "Deployment is moving the application into the production environment where it will be used by customers.",
+        "Operate": "The operate phase involves running the application in production, ensuring availability, and managing day-to-day operations.",
+        "Monitor": "Monitoring tracks system performance, errors, and user feedback to detect issues early and plan improvements."
+      };
+      document.getElementById("description").innerHTML = `<strong>${stage}:</strong> ${descriptions[stage]}`;
+    }
+  </script>
+</body>
+</html>
